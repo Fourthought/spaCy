@@ -96,6 +96,16 @@ This example shows how to update spaCy's entity recognizer with your own
 examples, starting off with an existing, pretrained model, or from scratch
 using a blank `Language` class.
 
+In this file the merge() method is used, which is now depricated.
+
+Have developed this code which you may wish to use (feedback welcome if you know a better version!!):
+
+        for span in spacy.util.filter_spans(spans):
+            with doc.retokenize() as retokenizer:
+                retokenizer.merge(span)
+                for token in span:
+                    token.ent_type_ = span.label_
+
 ```python
 https://github.com/explosion/spaCy/tree/master/examples/training/train_ner.py
 ```
